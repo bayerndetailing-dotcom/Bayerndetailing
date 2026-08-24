@@ -2,98 +2,566 @@
 <html lang="nl">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Bayern Detailing — gespecialiseerde BMW detailing. Reinigen. Beschermen. Behouden.">
-  <title>Bayern Detailing | Reinigen. Beschermen. Behouden.</title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="Bayern Detailing — gespecialiseerde BMW detailing. Reinigen. Beschermen. Behouden."
+  >
+
+  <title>
+    Bayern Detailing | Reinigen. Beschermen. Behouden.
+  </title>
+
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-<header class="site-header" id="top">
-  <a class="brand" href="#top"><strong>BAYERN</strong><span>DETAILING</span></a>
-  <button class="menu-button" type="button" aria-label="Menu openen" aria-expanded="false">Menu</button>
-  <nav class="main-nav">
-    <a href="#diensten">Diensten</a>
-    <a href="#over-ons">Over Bayern</a>
-    <a href="#portfolio">Portfolio</a>
-    <a class="nav-cta" href="#contact">Plan een afspraak</a>
-  </nav>
-</header>
 
-<main>
-<section class="hero section">
-  <div class="hero-copy">
-    <p class="eyebrow">PREMIUM BMW VERZORGING</p>
-    <h1>REINIGEN.<br>BESCHERMEN.<br><span>BEHOUDEN.</span></h1>
-    <p class="lead">Gespecialiseerde verzorging voor BMW's. Van grondige reiniging tot hoogwaardige bescherming en professioneel onderhoud.</p>
-    <div class="hero-actions">
-      <a class="button primary" href="#diensten">Bekijk onze diensten</a>
-      <a class="button secondary" href="#contact">Plan een afspraak</a>
-    </div>
-  </div>
+  <!-- HEADER -->
+  <header class="site-header" id="top">
 
-  <div class="hero-visual">
-    <div class="compare-slider" id="compare-slider">
-      <img class="compare-image compare-after" src="./images/before.png" alt="BMW motorruimte na professionele detailing">
-      <div class="compare-before" id="compare-before">
-        <img class="compare-image" src="./images/after.png" alt="">
+    <a class="brand" href="#top">
+      <strong>BAYERN</strong>
+      <span>DETAILING</span>
+    </a>
+
+    <button
+      class="menu-button"
+      type="button"
+      aria-label="Menu openen"
+      aria-expanded="false"
+    >
+      Menu
+    </button>
+
+    <nav class="main-nav">
+
+      <a href="#diensten">
+        Diensten
+      </a>
+
+      <a href="#over-ons">
+        Over Bayern
+      </a>
+
+      <a href="#portfolio">
+        Portfolio
+      </a>
+
+      <a
+        class="nav-cta"
+        href="#contact"
+      >
+        Plan een afspraak
+      </a>
+
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero section">
+
+      <div class="hero-copy">
+
+        <p class="eyebrow">
+          PREMIUM BMW VERZORGING
+        </p>
+
+        <h1>
+          REINIGEN.<br>
+          BESCHERMEN.<br>
+          <span>BEHOUDEN.</span>
+        </h1>
+
+        <p class="lead">
+          Gespecialiseerde verzorging voor BMW's.
+          Van grondige reiniging tot hoogwaardige bescherming
+          en professioneel onderhoud.
+        </p>
+
+        <div class="hero-actions">
+
+          <a
+            class="button primary"
+            href="#diensten"
+          >
+            Bekijk onze diensten
+          </a>
+
+          <a
+            class="button secondary"
+            href="#contact"
+          >
+            Plan een afspraak
+          </a>
+
+        </div>
+
       </div>
-      <div class="compare-divider" id="compare-divider">
-        <button class="compare-handle" id="compare-handle" type="button" aria-label="Sleep om voor en na te vergelijken" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-          <i></i><i></i>
+
+
+      <!-- BEFORE / AFTER SLIDER -->
+      <div class="hero-visual">
+
+        <div
+          class="compare-slider"
+          id="compare-slider"
+          aria-label="Voor en na vergelijking BMW motorruimte"
+        >
+
+          <!--
+            ACHTERGROND:
+            BEFORE.PNG
+          -->
+          <img
+            class="compare-image compare-background"
+            src="./images/before.png"
+            alt="BMW motorruimte vóór professionele detailing"
+            draggable="false"
+          >
+
+
+          <!--
+            VOORGROND:
+            AFTER.PNG
+
+            Deze afbeelding ligt exact bovenop
+            before.png.
+
+            De container wordt kleiner gemaakt,
+            NIET de afbeelding zelf.
+          -->
+          <div
+            class="compare-before"
+            id="compare-before"
+          >
+
+            <img
+              class="compare-image compare-before-image"
+              src="./images/after.png"
+              alt="BMW motorruimte na professionele detailing"
+              draggable="false"
+            >
+
+          </div>
+
+
+          <!-- SCHEIDINGSLIJN -->
+          <div
+            class="compare-divider"
+            id="compare-divider"
+          >
+
+            <button
+              class="compare-handle"
+              id="compare-handle"
+              type="button"
+              aria-label="Sleep om voor en na te vergelijken"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="50"
+            >
+
+              <span
+                class="compare-arrow compare-arrow-left"
+                aria-hidden="true"
+              ></span>
+
+              <span
+                class="compare-arrow compare-arrow-right"
+                aria-hidden="true"
+              ></span>
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- INTRO -->
+    <section class="intro section">
+
+      <p class="eyebrow">
+        UW BMW. ONZE AANDACHT.
+      </p>
+
+      <h2>
+        Geen standaard poetsbeurt.<br>
+        Wel aandacht voor ieder detail.
+      </h2>
+
+      <p>
+        Een BMW is meer dan alleen vervoer.
+        Daarom behandelen wij iedere auto zorgvuldig en met respect
+        voor de materialen, afwerking en uitstraling.
+      </p>
+
+    </section>
+
+
+    <!-- DIENSTEN -->
+    <section
+      class="services section"
+      id="diensten"
+    >
+
+      <div class="section-heading">
+
+        <p class="eyebrow">
+          ONZE DIENSTEN
+        </p>
+
+        <h2>
+          Drie principes.<br>
+          Eén standaard.
+        </h2>
+
+      </div>
+
+
+      <!-- DIENST 1 -->
+      <article class="service-card">
+
+        <b>01</b>
+
+        <div>
+
+          <h3>REINIGEN</h3>
+
+          <p>
+            Grondige interieur- en exterieurverzorging
+            voor een BMW die weer schoon, fris en verzorgd aanvoelt.
+          </p>
+
+          <ul>
+            <li>Interieur detailing</li>
+            <li>Exterieur detailing</li>
+            <li>Velgen, banden en glas</li>
+          </ul>
+
+        </div>
+
+      </article>
+
+
+      <!-- DIENST 2 -->
+      <article class="service-card">
+
+        <b>02</b>
+
+        <div>
+
+          <h3>BESCHERMEN</h3>
+
+          <p>
+            Hoogwaardige bescherming die helpt om de uitstraling
+            langer te behouden en onderhoud eenvoudiger te maken.
+          </p>
+
+          <ul>
+            <li>Keramische bescherming</li>
+            <li>Beschermende behandelingen</li>
+            <li>Advies passend bij gebruik en conditie</li>
+          </ul>
+
+        </div>
+
+      </article>
+
+
+      <!-- DIENST 3 -->
+      <article class="service-card">
+
+        <b>03</b>
+
+        <div>
+
+          <h3>BEHOUDEN</h3>
+
+          <p>
+            Periodieke professionele verzorging
+            voor BMW-eigenaren die hun auto structureel
+            verzorgd willen houden.
+          </p>
+
+          <ul>
+            <li>Onderhoudsdetail</li>
+            <li>Terugkerende verzorging</li>
+            <li>Persoonlijk onderhoudsadvies</li>
+          </ul>
+
+        </div>
+
+      </article>
+
+    </section>
+
+
+    <!-- OVER ONS -->
+    <section
+      class="split section"
+      id="over-ons"
+    >
+
+      <div class="placeholder">
+        JOUW DETAILFOTO
+      </div>
+
+
+      <div>
+
+        <p class="eyebrow">
+          OVER BAYERN DETAILING
+        </p>
+
+        <h2>
+          GESPECIALISEERD IN BMW.<br>
+          GEDREVEN DOOR DETAIL.
+        </h2>
+
+        <p>
+          Wij richten ons bewust op BMW.
+          Onze aanpak is persoonlijk en zorgvuldig:
+          we bekijken de auto, bespreken de wensen
+          en bepalen welke behandeling het beste past.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- PORTFOLIO -->
+    <section
+      class="portfolio section"
+      id="portfolio"
+    >
+
+      <div class="section-heading">
+
+        <p class="eyebrow">
+          PORTFOLIO
+        </p>
+
+        <h2>
+          RESULTATEN DIE<br>
+          VOOR ZICH SPREKEN.
+        </h2>
+
+      </div>
+
+
+      <div class="portfolio-grid">
+
+        <div class="placeholder">
+          PROJECT 01
+        </div>
+
+        <div class="placeholder">
+          PROJECT 02
+        </div>
+
+        <div class="placeholder">
+          PROJECT 03
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section
+      class="contact section"
+      id="contact"
+    >
+
+      <div>
+
+        <p class="eyebrow">
+          CONTACT
+        </p>
+
+        <h2>
+          GEEF JE BMW DE AANDACHT
+          DIE HIJ VERDIENT.
+        </h2>
+
+        <p>
+          Vertel ons meer over je BMW en je wensen.
+        </p>
+
+        <p>
+
+          <strong>E-mail:</strong>
+          info@bayerndetailing.com
+
+          <br>
+
+          <strong>Instagram:</strong>
+          @bayerndetailing
+
+        </p>
+
+      </div>
+
+
+      <form id="contact-form">
+
+        <div class="form-row">
+
+          <label>
+
+            Naam
+
+            <input
+              type="text"
+              required
+            >
+
+          </label>
+
+
+          <label>
+
+            E-mailadres
+
+            <input
+              type="email"
+              required
+            >
+
+          </label>
+
+        </div>
+
+
+        <div class="form-row">
+
+          <label>
+
+            BMW-model
+
+            <input
+              type="text"
+              placeholder="Bijv. BMW M340i"
+            >
+
+          </label>
+
+
+          <label>
+
+            Bouwjaar
+
+            <input
+              type="number"
+              min="1900"
+              max="2100"
+            >
+
+          </label>
+
+        </div>
+
+
+        <label>
+
+          Gewenste behandeling
+
+          <select>
+
+            <option value="">
+              Maak een keuze
+            </option>
+
+            <option>
+              Interieur detailing
+            </option>
+
+            <option>
+              Exterieur detailing
+            </option>
+
+            <option>
+              Keramische bescherming
+            </option>
+
+            <option>
+              Onderhoudsdetail
+            </option>
+
+          </select>
+
+        </label>
+
+
+        <label>
+
+          Vertel ons meer
+
+          <textarea rows="5"></textarea>
+
+        </label>
+
+
+        <button
+          class="button primary"
+          type="submit"
+        >
+          Aanvraag versturen
         </button>
-      </div>
+
+
+        <p id="form-status"></p>
+
+      </form>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="brand">
+
+      <strong>BAYERN</strong>
+      <span>DETAILING</span>
+
     </div>
-  </div>
-</section>
 
-<section class="intro section">
-  <p class="eyebrow">UW BMW. ONZE AANDACHT.</p>
-  <h2>Geen standaard poetsbeurt.<br>Wel aandacht voor ieder detail.</h2>
-  <p>Een BMW is meer dan alleen vervoer. Daarom behandelen wij iedere auto zorgvuldig en met respect voor de materialen, afwerking en uitstraling.</p>
-</section>
 
-<section class="services section" id="diensten">
-  <div class="section-heading">
-    <p class="eyebrow">ONZE DIENSTEN</p>
-    <h2>Drie principes.<br>Eén standaard.</h2>
-  </div>
-  <article class="service-card"><b>01</b><div><h3>REINIGEN</h3><p>Grondige interieur- en exterieurverzorging voor een BMW die weer schoon, fris en verzorgd aanvoelt.</p><ul><li>Interieur detailing</li><li>Exterieur detailing</li><li>Velgen, banden en glas</li></ul></div></article>
-  <article class="service-card"><b>02</b><div><h3>BESCHERMEN</h3><p>Hoogwaardige bescherming die helpt om de uitstraling langer te behouden en onderhoud eenvoudiger te maken.</p><ul><li>Keramische bescherming</li><li>Beschermende behandelingen</li><li>Advies passend bij gebruik en conditie</li></ul></div></article>
-  <article class="service-card"><b>03</b><div><h3>BEHOUDEN</h3><p>Periodieke professionele verzorging voor BMW-eigenaren die hun auto structureel verzorgd willen houden.</p><ul><li>Onderhoudsdetail</li><li>Terugkerende verzorging</li><li>Persoonlijk onderhoudsadvies</li></ul></div></article>
-</section>
+    <p>
+      REINIGEN. BESCHERMEN. BEHOUDEN.
+    </p>
 
-<section class="split section" id="over-ons">
-  <div class="placeholder">JOUW DETAILFOTO</div>
-  <div>
-    <p class="eyebrow">OVER BAYERN DETAILING</p>
-    <h2>GESPECIALISEERD IN BMW.<br>GEDREVEN DOOR DETAIL.</h2>
-    <p>Wij richten ons bewust op BMW. Onze aanpak is persoonlijk en zorgvuldig: we bekijken de auto, bespreken de wensen en bepalen welke behandeling het beste past.</p>
-  </div>
-</section>
 
-<section class="portfolio section" id="portfolio">
-  <div class="section-heading"><p class="eyebrow">PORTFOLIO</p><h2>RESULTATEN DIE<br>VOOR ZICH SPREKEN.</h2></div>
-  <div class="portfolio-grid">
-    <div class="placeholder">PROJECT 01</div>
-    <div class="placeholder">PROJECT 02</div>
-    <div class="placeholder">PROJECT 03</div>
-  </div>
-</section>
+    <small>
+      ©
+      <span id="year"></span>
+      Bayern Detailing
+    </small>
 
-<section class="contact section" id="contact">
-  <div><p class="eyebrow">CONTACT</p><h2>GEEF JE BMW DE AANDACHT DIE HIJ VERDIENT.</h2><p>Vertel ons meer over je BMW en je wensen.</p><p><strong>E-mail:</strong> info@bayerndetailing.com<br><strong>Instagram:</strong> @bayerndetailing</p></div>
-  <form id="contact-form">
-    <div class="form-row"><label>Naam<input required></label><label>E-mailadres<input type="email" required></label></div>
-    <div class="form-row"><label>BMW-model<input placeholder="Bijv. BMW M340i"></label><label>Bouwjaar<input type="number"></label></div>
-    <label>Gewenste behandeling<select><option>Maak een keuze</option><option>Interieur detailing</option><option>Exterieur detailing</option><option>Keramische bescherming</option><option>Onderhoudsdetail</option></select></label>
-    <label>Vertel ons meer<textarea rows="5"></textarea></label>
-    <button class="button primary" type="submit">Aanvraag versturen</button>
-    <p id="form-status"></p>
-  </form>
-</section>
-</main>
+  </footer>
 
-<footer><div class="brand"><strong>BAYERN</strong><span>DETAILING</span></div><p>REINIGEN. BESCHERMEN. BEHOUDEN.</p><small>© <span id="year"></span> Bayern Detailing</small></footer>
-<script src="script.js"></script>
+
+  <script src="script.js"></script>
+
 </body>
 </html>
