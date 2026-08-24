@@ -360,26 +360,22 @@
        CONTACT
        ========================= -->
 
-  <section
-    class="contact section"
-    id="contact"
-  >
+ <section class="contact section" id="contact">
 
-    <div class="contact-copy">
+  <div class="contact-copy">
+    <p class="eyebrow">CONTACT</p>
 
-      <p class="eyebrow">
-        CONTACT
-      </p>
+    <h2>
+      GEEF JE BMW DE
+      AANDACHT DIE HIJ
+      VERDIENT.
+    </h2>
 
-      <h2>
-        GEEF JE BMW DE AANDACHT
-        DIE HIJ VERDIENT.
-      </h2>
+    <p>
+      Vertel ons meer over je BMW en je wensen.
+    </p>
 
-      <p>
-        Vertel ons meer over je BMW en je wensen.
-      </p>
-
+    <div class="contact-placeholder">
       <p>
         <strong>E-mail:</strong>
         bayerndetailing@gmail.com
@@ -388,206 +384,192 @@
         <strong>Instagram:</strong>
         @bayerndetailing
       </p>
+    </div>
+  </div>
+
+
+  <form
+    class="contact-form"
+    id="contact-form"
+    action="https://formsubmit.co/bayerndetailing@gmail.com"
+    method="POST"
+  >
+
+    <!-- FormSubmit instellingen -->
+
+    <input
+      type="hidden"
+      name="_subject"
+      value="Nieuwe aanvraag via Bayern Detailing"
+    >
+
+    <input
+      type="hidden"
+      name="_captcha"
+      value="false"
+    >
+
+
+    <!-- Naam en e-mail -->
+
+    <div class="form-row">
+
+      <label>
+        Naam
+
+        <input
+          type="text"
+          name="naam"
+          required
+        >
+      </label>
+
+
+      <label>
+        E-mailadres
+
+        <input
+          type="email"
+          name="email"
+          required
+        >
+      </label>
 
     </div>
 
 
-    <!-- CONTACTFORMULIER -->
+    <!-- BMW gegevens -->
 
-    <form
-      id="contact-form"
-      action="https://api.web3forms.com/submit"
-      method="POST"
-    >
+    <div class="form-row">
 
-      <!-- VERVANG DIT DOOR JE ECHTE ACCESS KEY -->
+      <label>
+        BMW-model
 
-      <input
-        type="hidden"
-        name="access_key"
-        value="VUL_HIER_JE_WEB3FORMS_ACCESS_KEY_IN"
-      >
-
-
-      <input
-        type="hidden"
-        name="subject"
-        value="Nieuwe aanvraag via Bayern Detailing"
-      >
-
-
-      <!-- SPAMBEVEILIGING -->
-
-      <input
-        type="checkbox"
-        name="botcheck"
-        class="hidden-botcheck"
-        tabindex="-1"
-        autocomplete="off"
-      >
-
-
-      <div class="form-row">
-
-        <label>
-
-          Naam
-
-          <input
-            type="text"
-            name="name"
-            required
-          >
-
-        </label>
-
-
-        <label>
-
-          E-mailadres
-
-          <input
-            type="email"
-            name="email"
-            required
-          >
-
-        </label>
-
-      </div>
-
-
-      <div class="form-row">
-
-        <label>
-
-          BMW-model
-
-          <input
-            type="text"
-            name="bmw_model"
-            placeholder="Bijv. BMW M340i"
-          >
-
-        </label>
-
-
-        <label>
-
-          Bouwjaar
-
-          <input
-            type="number"
-            name="bouwjaar"
-            min="1900"
-            max="2100"
-          >
-
-        </label>
-
-      </div>
-
-
-      <!-- MEERDERE SERVICES -->
-
-      <fieldset class="services-select">
-
-        <legend>
-          Gewenste behandelingen
-        </legend>
-
-
-        <label class="service-option">
-
-          <input
-            type="checkbox"
-            name="services[]"
-            value="Interieur detailing"
-          >
-
-          <span>
-            Interieur detailing
-          </span>
-
-        </label>
-
-
-        <label class="service-option">
-
-          <input
-            type="checkbox"
-            name="services[]"
-            value="Exterieur detailing"
-          >
-
-          <span>
-            Exterieur detailing
-          </span>
-
-        </label>
-
-
-        <label class="service-option">
-
-          <input
-            type="checkbox"
-            name="services[]"
-            value="Keramische bescherming"
-          >
-
-          <span>
-            Keramische bescherming
-          </span>
-
-        </label>
-
-
-        <label class="service-option">
-
-          <input
-            type="checkbox"
-            name="services[]"
-            value="Onderhoudsdetail"
-          >
-
-          <span>
-            Onderhoudsdetail
-          </span>
-
-        </label>
-
-      </fieldset>
+        <input
+          type="text"
+          name="bmw-model"
+          placeholder="Bijv. BMW M340i"
+        >
+      </label>
 
 
       <label>
+        Bouwjaar
 
-        Vertel ons meer
+        <input
+          type="number"
+          name="bouwjaar"
+          min="1900"
+          max="2030"
+        >
+      </label>
 
-        <textarea
-          name="message"
-          rows="5"
-          placeholder="Vertel ons meer over je BMW en je wensen."
-        ></textarea>
+    </div>
+
+
+    <!-- Behandelingen -->
+
+    <fieldset class="service-options">
+
+      <legend>
+        Gewenste behandelingen
+      </legend>
+
+
+      <label class="service-option">
+
+        <input
+          type="checkbox"
+          name="behandeling[]"
+          value="Interieur detailing"
+        >
+
+        <span>
+          Interieur detailing
+        </span>
 
       </label>
 
 
-      <button
-        class="button primary"
-        type="submit"
-      >
-        Aanvraag versturen
-      </button>
+      <label class="service-option">
+
+        <input
+          type="checkbox"
+          name="behandeling[]"
+          value="Exterieur detailing"
+        >
+
+        <span>
+          Exterieur detailing
+        </span>
+
+      </label>
 
 
-      <p
-        id="form-status"
-        aria-live="polite"
-      ></p>
+      <label class="service-option">
 
-    </form>
+        <input
+          type="checkbox"
+          name="behandeling[]"
+          value="Keramische bescherming"
+        >
 
-  </section>
+        <span>
+          Keramische bescherming
+        </span>
+
+      </label>
+
+
+      <label class="service-option">
+
+        <input
+          type="checkbox"
+          name="behandeling[]"
+          value="Onderhoudsdetail"
+        >
+
+        <span>
+          Onderhoudsdetail
+        </span>
+
+      </label>
+
+    </fieldset>
+
+
+    <!-- Bericht -->
+
+    <label>
+      Vertel ons meer
+
+      <textarea
+        name="bericht"
+        rows="6"
+        placeholder="Vertel ons meer over je BMW en je wensen."
+      ></textarea>
+
+    </label>
+
+
+    <!-- Verzenden -->
+
+    <button
+      class="button button-primary"
+      type="submit"
+    >
+      Aanvraag versturen
+    </button>
+
+
+    <p
+      class="form-status"
+      id="form-status"
+    ></p>
+
+  </form>
+
+</section>
 
 </main>
 
