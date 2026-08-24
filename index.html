@@ -2,14 +2,20 @@
 <html lang="nl">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
 
   <meta
     name="description"
     content="Bayern Detailing — gespecialiseerde BMW detailing. Reinigen. Beschermen. Behouden."
   >
 
-  <title>Bayern Detailing | Reinigen. Beschermen. Behouden.</title>
+  <title>
+    Bayern Detailing | Reinigen. Beschermen. Behouden.
+  </title>
 
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -37,7 +43,9 @@
       <a href="#diensten">Diensten</a>
       <a href="#over-ons">Over Bayern</a>
       <a href="#portfolio">Portfolio</a>
-      <a class="nav-cta" href="#contact">Plan een afspraak</a>
+      <a class="nav-cta" href="#contact">
+        Plan een afspraak
+      </a>
     </nav>
 
   </header>
@@ -87,69 +95,60 @@
       </div>
 
 
-      <!-- BEFORE / AFTER SLIDER -->
+      <!-- BEFORE / AFTER -->
       <div class="hero-visual">
 
         <div
-          class="compare-slider"
-          id="compare-slider"
-          aria-label="Voor en na vergelijking BMW motorruimte"
+          class="image-comparison"
+          id="image-comparison"
+          style="--comparison-position: 50%;"
         >
 
           <!-- ONDERSTE FOTO -->
           <img
-            class="compare-image compare-bottom-image"
+            class="comparison-image comparison-after"
+            src="./images/after.png"
+            alt="BMW motorruimte na professionele detailing"
+            draggable="false"
+          >
+
+
+          <!-- BOVENSTE FOTO -->
+          <img
+            class="comparison-image comparison-before"
             src="./images/before.png"
             alt="BMW motorruimte vóór professionele detailing"
             draggable="false"
           >
 
 
-          <!-- BOVENSTE FOTO -->
+          <!-- VERTICALE LIJN -->
           <div
-            class="compare-overlay"
-            id="compare-overlay"
+            class="comparison-divider"
+            aria-hidden="true"
           >
 
-            <img
-              class="compare-image compare-top-image"
-              src="./images/after.png"
-              alt="BMW motorruimte na professionele detailing"
-              draggable="false"
-            >
+            <div class="comparison-handle">
+
+              <span class="comparison-arrow left"></span>
+              <span class="comparison-arrow right"></span>
+
+            </div>
 
           </div>
 
 
-          <!-- SCHEIDINGSLIJN -->
-          <div
-            class="compare-divider"
-            id="compare-divider"
+          <!-- ECHTE BEDIENING -->
+          <input
+            class="comparison-range"
+            id="comparison-range"
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+            step="0.1"
+            aria-label="Vergelijk voor en na"
           >
-
-            <button
-              class="compare-handle"
-              id="compare-handle"
-              type="button"
-              aria-label="Sleep om voor en na te vergelijken"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              aria-valuenow="50"
-            >
-
-              <span
-                class="compare-arrow compare-arrow-left"
-                aria-hidden="true"
-              ></span>
-
-              <span
-                class="compare-arrow compare-arrow-right"
-                aria-hidden="true"
-              ></span>
-
-            </button>
-
-          </div>
 
         </div>
 
@@ -180,7 +179,10 @@
 
 
     <!-- DIENSTEN -->
-    <section class="services section" id="diensten">
+    <section
+      class="services section"
+      id="diensten"
+    >
 
       <div class="section-heading">
 
@@ -272,7 +274,10 @@
 
 
     <!-- OVER ONS -->
-    <section class="split section" id="over-ons">
+    <section
+      class="split section"
+      id="over-ons"
+    >
 
       <div class="placeholder">
         JOUW DETAILFOTO
@@ -302,7 +307,10 @@
 
 
     <!-- PORTFOLIO -->
-    <section class="portfolio section" id="portfolio">
+    <section
+      class="portfolio section"
+      id="portfolio"
+    >
 
       <div class="section-heading">
 
@@ -316,7 +324,6 @@
         </h2>
 
       </div>
-
 
       <div class="portfolio-grid">
 
@@ -338,7 +345,10 @@
 
 
     <!-- CONTACT -->
-    <section class="contact section" id="contact">
+    <section
+      class="contact section"
+      id="contact"
+    >
 
       <div>
 
@@ -358,9 +368,7 @@
         <p>
           <strong>E-mail:</strong>
           info@bayerndetailing.com
-
           <br>
-
           <strong>Instagram:</strong>
           @bayerndetailing
         </p>
@@ -373,26 +381,19 @@
         <div class="form-row">
 
           <label>
-
             Naam
-
             <input
               type="text"
               required
             >
-
           </label>
 
-
           <label>
-
             E-mailadres
-
             <input
               type="email"
               required
             >
-
           </label>
 
         </div>
@@ -401,27 +402,20 @@
         <div class="form-row">
 
           <label>
-
             BMW-model
-
             <input
               type="text"
               placeholder="Bijv. BMW M340i"
             >
-
           </label>
 
-
           <label>
-
             Bouwjaar
-
             <input
               type="number"
               min="1900"
               max="2100"
             >
-
           </label>
 
         </div>
@@ -432,27 +426,25 @@
           Gewenste behandeling
 
           <select>
-
             <option value="">
               Maak een keuze
             </option>
 
-            <option value="interieur">
+            <option>
               Interieur detailing
             </option>
 
-            <option value="exterieur">
+            <option>
               Exterieur detailing
             </option>
 
-            <option value="keramisch">
+            <option>
               Keramische bescherming
             </option>
 
-            <option value="onderhoud">
+            <option>
               Onderhoudsdetail
             </option>
-
           </select>
 
         </label>
@@ -474,7 +466,6 @@
           Aanvraag versturen
         </button>
 
-
         <p id="form-status"></p>
 
       </form>
@@ -488,10 +479,8 @@
   <footer>
 
     <div class="brand">
-
       <strong>BAYERN</strong>
       <span>DETAILING</span>
-
     </div>
 
     <p>
@@ -499,9 +488,7 @@
     </p>
 
     <small>
-      ©
-      <span id="year"></span>
-      Bayern Detailing
+      © <span id="year"></span> Bayern Detailing
     </small>
 
   </footer>
