@@ -4,39 +4,58 @@
 
 :root {
   --black: #111111;
-  --dark: #1a1a1a;
-  --grey: #666666;
-  --light-grey: #eeeeee;
+  --dark: #181818;
+  --grey: #a0a0a0;
+  --light-grey: rgba(255, 255, 255, 0.12);
   --white: #ffffff;
   --accent: #d8d8d8;
 
   --max-width: 1280px;
 }
 
+
 * {
   box-sizing: border-box;
 }
+
 
 html {
   scroll-behavior: smooth;
 }
 
+
 body {
   margin: 0;
-  background: var(--white);
-  color: var(--black);
-  font-family: Arial, Helvetica, sans-serif;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(255, 255, 255, 0.05),
+      transparent 40%
+    ),
+    #111111;
+
+  color: var(--white);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
   line-height: 1.6;
 }
+
 
 img {
   max-width: 100%;
 }
 
+
 a {
   color: inherit;
   text-decoration: none;
 }
+
 
 button,
 input,
@@ -45,8 +64,13 @@ textarea {
   font: inherit;
 }
 
+
 .section {
-  width: min(calc(100% - 48px), var(--max-width));
+  width: min(
+    calc(100% - 48px),
+    var(--max-width)
+  );
+
   margin-left: auto;
   margin-right: auto;
 }
@@ -57,8 +81,13 @@ textarea {
    ========================= */
 
 .site-header {
-  width: min(calc(100% - 48px), var(--max-width));
+  width: min(
+    calc(100% - 48px),
+    var(--max-width)
+  );
+
   min-height: 90px;
+
   margin: 0 auto;
 
   display: flex;
@@ -70,50 +99,79 @@ textarea {
   border-bottom: 1px solid var(--light-grey);
 }
 
+
 .brand {
   display: flex;
   flex-direction: column;
+
   line-height: 1;
   letter-spacing: 0.08em;
 }
+
 
 .brand strong {
   font-size: 1.2rem;
 }
 
+
 .brand span {
   margin-top: 5px;
+
   font-size: 0.65rem;
   letter-spacing: 0.22em;
+
   color: var(--grey);
 }
+
 
 .main-nav {
   display: flex;
   align-items: center;
+
   gap: 28px;
+
   font-size: 0.9rem;
 }
+
 
 .main-nav a {
   transition: opacity 0.2s ease;
 }
 
+
 .main-nav a:hover {
-  opacity: 0.55;
+  opacity: 0.6;
 }
+
 
 .nav-cta {
   padding: 12px 18px;
-  background: var(--black);
-  color: var(--white);
+
+  background: var(--white);
+  color: var(--black);
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
+
+
+.nav-cta:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
 
 .menu-button {
   display: none;
+
   padding: 10px 14px;
-  border: 1px solid var(--black);
+
+  border: 1px solid var(--white);
   background: transparent;
+
+  color: var(--white);
+
   cursor: pointer;
 }
 
@@ -139,12 +197,18 @@ textarea {
   gap: 70px;
 }
 
+
 .eyebrow {
   margin: 0 0 18px;
+
   font-size: 0.75rem;
   font-weight: 700;
+
   letter-spacing: 0.15em;
+
+  color: var(--grey);
 }
+
 
 h1,
 h2,
@@ -153,37 +217,58 @@ p {
   margin-top: 0;
 }
 
+
 h1 {
   margin-bottom: 28px;
 
-  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-size:
+    clamp(
+      3rem,
+      7vw,
+      6.5rem
+    );
 
   line-height: 0.92;
   letter-spacing: -0.06em;
 }
 
+
 h1 span {
   color: #888888;
 }
 
+
 h2 {
-  font-size: clamp(2rem, 4vw, 4.2rem);
+  font-size:
+    clamp(
+      2rem,
+      4vw,
+      4.2rem
+    );
+
   line-height: 0.95;
   letter-spacing: -0.05em;
 }
 
+
 .lead {
   max-width: 600px;
+
   font-size: 1.05rem;
+
   color: var(--grey);
 }
+
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
+
   gap: 12px;
+
   margin-top: 35px;
 }
+
 
 .button {
   display: inline-flex;
@@ -195,16 +280,41 @@ h2 {
   padding: 14px 22px;
 
   font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    background 0.2s ease;
 }
 
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+
 .primary {
-  background: var(--black);
+  background: var(--white);
+  color: var(--black);
+}
+
+
+.primary:hover {
+  opacity: 0.88;
+}
+
+
+.secondary {
+  border: 1px solid var(--white);
+
+  background: transparent;
+
   color: var(--white);
 }
 
-.secondary {
-  border: 1px solid var(--black);
-  background: transparent;
+
+.secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 
@@ -217,28 +327,31 @@ h2 {
   min-width: 0;
 }
 
+
 .image-comparison {
   --comparison-position: 50%;
 
   position: relative;
 
   width: 100%;
+
   aspect-ratio: 4 / 3;
 
   overflow: hidden;
 
-  background: #dddddd;
+  background: #222222;
 
   user-select: none;
 
   box-shadow:
     0 20px 50px
-    rgba(0, 0, 0, 0.15);
+    rgba(0, 0, 0, 0.35);
 }
 
+
 /*
-  Beide foto's liggen exact
-  op dezelfde positie.
+  Beide foto's liggen volledig
+  op exact dezelfde positie.
 */
 
 .comparison-image {
@@ -252,13 +365,16 @@ h2 {
 
   max-width: none;
 
+  display: block;
+
   object-fit: cover;
   object-position: center;
 
-  display: block;
-
   pointer-events: none;
+
+  user-select: none;
 }
+
 
 /* AFTER ligt onderaan */
 
@@ -266,11 +382,13 @@ h2 {
   z-index: 1;
 }
 
+
 /*
   BEFORE ligt bovenop.
 
-  De afbeelding zelf beweegt nooit.
-  Alleen het zichtbare deel verandert.
+  De foto zelf beweegt nooit.
+  Alleen het zichtbare deel
+  wordt weggeknipt.
 */
 
 .comparison-before {
@@ -285,7 +403,8 @@ h2 {
     );
 }
 
-/* Verticale lijn */
+
+/* Verticale sliderlijn */
 
 .comparison-divider {
   position: absolute;
@@ -297,7 +416,7 @@ h2 {
 
   width: 3px;
 
-  background: #ffffff;
+  background: var(--white);
 
   transform: translateX(-50%);
 
@@ -306,7 +425,8 @@ h2 {
   pointer-events: none;
 }
 
-/* Ronde knop */
+
+/* Sliderknop */
 
 .comparison-handle {
   position: absolute;
@@ -317,10 +437,10 @@ h2 {
   width: 58px;
   height: 58px;
 
-  border: 3px solid #ffffff;
+  border: 3px solid var(--white);
   border-radius: 50%;
 
-  background: #111111;
+  background: var(--black);
 
   transform: translate(-50%, -50%);
 
@@ -332,10 +452,11 @@ h2 {
 
   box-shadow:
     0 8px 24px
-    rgba(0, 0, 0, 0.3);
+    rgba(0, 0, 0, 0.4);
 }
 
-/* Pijlen */
+
+/* Sliderpijlen */
 
 .comparison-arrow {
   width: 0;
@@ -345,23 +466,25 @@ h2 {
   border-bottom: 7px solid transparent;
 }
 
+
 .comparison-arrow.left {
-  border-right: 10px solid #ffffff;
+  border-right: 10px solid var(--white);
 }
+
 
 .comparison-arrow.right {
-  border-left: 10px solid #ffffff;
+  border-left: 10px solid var(--white);
 }
 
+
 /*
-  De onzichtbare bediening.
+  Onzichtbare interactieve slider.
 */
 
 .comparison-range {
   position: absolute;
 
-  top: 0;
-  left: 0;
+  inset: 0;
 
   width: 100%;
   height: 100%;
@@ -386,11 +509,14 @@ h2 {
 .intro {
   padding-top: 120px;
   padding-bottom: 120px;
+
   max-width: 900px;
 }
 
+
 .intro p:last-child {
   max-width: 650px;
+
   color: var(--grey);
 }
 
@@ -404,9 +530,11 @@ h2 {
   padding-bottom: 100px;
 }
 
+
 .section-heading {
   margin-bottom: 55px;
 }
+
 
 .service-card {
   display: grid;
@@ -422,30 +550,45 @@ h2 {
   border-top: 1px solid var(--light-grey);
 }
 
+
 .service-card b {
   font-size: 0.9rem;
+
   color: var(--grey);
 }
 
+
 .service-card h3 {
   margin-bottom: 15px;
+
   font-size: 2rem;
   letter-spacing: -0.04em;
 }
 
+
 .service-card p {
   max-width: 700px;
+
   color: var(--grey);
 }
 
+
 .service-card ul {
   margin: 25px 0 0;
+
   padding-left: 20px;
+
+  color: #cfcfcf;
+}
+
+
+.service-card li {
+  margin-bottom: 5px;
 }
 
 
 /* =========================
-   SPLIT
+   OVER ONS
    ========================= */
 
 .split {
@@ -463,9 +606,11 @@ h2 {
   align-items: center;
 }
 
+
 .split p:last-child {
   color: var(--grey);
 }
+
 
 .placeholder {
   min-height: 400px;
@@ -474,7 +619,9 @@ h2 {
   align-items: center;
   justify-content: center;
 
-  background: #e7e7e7;
+  background: #1b1b1b;
+
+  border: 1px solid var(--light-grey);
 
   color: var(--grey);
 
@@ -492,6 +639,7 @@ h2 {
   padding-bottom: 100px;
 }
 
+
 .portfolio-grid {
   display: grid;
 
@@ -500,6 +648,7 @@ h2 {
 
   gap: 20px;
 }
+
 
 .portfolio-grid .placeholder {
   min-height: 350px;
@@ -523,11 +672,14 @@ h2 {
   gap: 70px;
 }
 
+
 .contact form {
   display: flex;
   flex-direction: column;
+
   gap: 18px;
 }
+
 
 .form-row {
   display: grid;
@@ -539,6 +691,7 @@ h2 {
   gap: 18px;
 }
 
+
 label {
   display: flex;
   flex-direction: column;
@@ -549,6 +702,7 @@ label {
   font-weight: 700;
 }
 
+
 input,
 select,
 textarea {
@@ -556,17 +710,40 @@ textarea {
 
   padding: 14px;
 
-  border: 1px solid #cccccc;
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.2);
 
-  background: var(--white);
+  background: #1a1a1a;
+
+  color: var(--white);
 }
+
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+
+  border-color:
+    rgba(255, 255, 255, 0.6);
+}
+
+
+select option {
+  background: #1a1a1a;
+  color: var(--white);
+}
+
 
 textarea {
   resize: vertical;
 }
 
+
 #form-status {
   margin: 0;
+
   color: var(--grey);
 }
 
@@ -594,9 +771,11 @@ footer {
   gap: 30px;
 }
 
+
 footer p,
 footer small {
   margin: 0;
+
   color: var(--grey);
 }
 
@@ -613,17 +792,23 @@ footer small {
     grid-template-columns: 1fr;
 
     padding-top: 60px;
+
+    gap: 55px;
   }
+
 
   .hero-copy {
     max-width: 700px;
   }
 
+
   .split,
   .contact {
     grid-template-columns: 1fr;
+
     gap: 45px;
   }
+
 
   .portfolio-grid {
     grid-template-columns:
@@ -638,23 +823,63 @@ footer small {
   .section,
   .site-header,
   footer {
-    width: min(
-      calc(100% - 32px),
-      var(--max-width)
-    );
+    width:
+      min(
+        calc(100% - 32px),
+        var(--max-width)
+      );
   }
+
 
   .site-header {
     min-height: 75px;
+
+    position: relative;
   }
+
 
   .menu-button {
     display: block;
   }
 
+
   .main-nav {
     display: none;
+
+    position: absolute;
+
+    top: calc(100% + 1px);
+    left: 0;
+    right: 0;
+
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 0;
+
+    padding: 15px;
+
+    background: #111111;
+
+    border:
+      1px solid
+      rgba(255, 255, 255, 0.12);
+
+    z-index: 100;
   }
+
+
+  .main-nav a {
+    padding: 14px 10px;
+  }
+
+
+  .main-nav .nav-cta {
+    margin-top: 8px;
+
+    text-align: center;
+  }
+
 
   .hero {
     padding-top: 45px;
@@ -663,30 +888,71 @@ footer small {
     gap: 45px;
   }
 
+
+  .hero-actions {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+
+  .button {
+    width: 100%;
+  }
+
+
+  .image-comparison {
+    aspect-ratio: 4 / 3;
+  }
+
+
   .comparison-handle {
     width: 48px;
     height: 48px;
   }
 
+
   .comparison-divider {
     width: 2px;
   }
 
+
+  .comparison-arrow {
+    border-top-width: 6px;
+    border-bottom-width: 6px;
+  }
+
+
+  .comparison-arrow.left {
+    border-right-width: 8px;
+  }
+
+
+  .comparison-arrow.right {
+    border-left-width: 8px;
+  }
+
+
   .service-card {
     grid-template-columns: 1fr;
+
     gap: 15px;
   }
+
 
   .portfolio-grid {
     grid-template-columns: 1fr;
   }
 
+
   .form-row {
     grid-template-columns: 1fr;
   }
 
+
   footer {
     align-items: flex-start;
+
     flex-direction: column;
   }
 
