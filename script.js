@@ -1,142 +1,146 @@
-// ================================
-// BEFORE / AFTER IMAGE SLIDER
-// ================================
+document.addEventListener("DOMContentLoaded", () => {
 
-const slider = document.getElementById("compare-slider");
-const overlay = document.getElementById("compare-overlay");
-const divider = document.getElementById("compare-divider");
-const handle = document.getElementById("compare-handle");
+  // =========================
+  // BEFORE / AFTER SLIDER
+  // =========================
 
-let isDragging = false;
+  const comparison =
+    document.getElementById("image-comparison");
 
-
-// Update de positie van de slider
-function updateCompareSlider(clientX) {
-
-  const rect = slider.getBoundingClientRect();
-
-  // Positie van de cursor binnen de afbeelding
-  let position = clientX - rect.left;
-
-  // Voorkom dat de slider buiten de afbeelding komt
-  position = Math.max(
-    0,
-    Math.min(position, rect.width)
-  );
-
-  // Zet om naar percentage
-  const percentage = (position / rect.width) * 100;
+  const range =
+    document.getElementById("comparison-range");
 
 
-  /*
-    BELANGRIJK:
+  if (comparison && range) {
 
-    De after.png verandert NIET van:
-    - grootte
-    - positie
-    - uitsnede
-    - schaal
+    function updateComparison() {
 
-    Alleen het zichtbare gedeelte
-    wordt verborgen met clip-path.
-  */
+      const value = range.value;
 
-  overlay.style.clipPath =
-    `inset(0 ${100 - percentage}% 0 0)`;
+      /*
+        De CSS-variabele bepaalt:
 
+        1. Hoeveel van before.png zichtbaar is
+        2. Waar de verticale lijn staat
 
-  // Verplaats alleen de scheidingslijn
-  divider.style.left = `${percentage}%`;
+        De foto's zelf veranderen nooit
+        van positie of grootte.
+      */
 
-
-  // Update toegankelijkheidswaarde
-  handle.setAttribute(
-    "aria-valuenow",
-    Math.round(percentage)
-  );
-
-}
-
-
-// Begin slepen
-slider.addEventListener("pointerdown", (event) => {
-
-  isDragging = true;
-
-  slider.setPointerCapture(event.pointerId);
-
-  updateCompareSlider(event.clientX);
-
-});
-
-
-// Tijdens slepen
-slider.addEventListener("pointermove", (event) => {
-
-  if (!isDragging) return;
-
-  updateCompareSlider(event.clientX);
-
-});
-
-
-// Stop slepen
-slider.addEventListener("pointerup", () => {
-
-  isDragging = false;
-
-});
-
-
-// Stop bij annuleren
-slider.addEventListener("pointercancel", () => {
-
-  isDragging = false;
-
-});
-
-
-// ================================
-// FOOTER JAARTAL
-// ================================
-
-const yearElement = document.getElementById("year");
-
-if (yearElement) {
-
-  yearElement.textContent =
-    new Date().getFullYear();
-
-}
-
-
-// ================================
-// CONTACTFORMULIER
-// ================================
-
-const contactForm =
-  document.getElementById("contact-form");
-
-const formStatus =
-  document.getElementById("form-status");
-
-
-if (contactForm) {
-
-  contactForm.addEventListener(
-    "submit",
-    function (event) {
-
-      event.preventDefault();
-
-      if (formStatus) {
-
-        formStatus.textContent =
-          "Bedankt! Je aanvraag is ontvangen.";
-
-      }
+      comparison.style.setProperty(
+        "--comparison-position",
+        `${value}%`
+      );
 
     }
-  );
 
-}
+
+    // Update tijdens slepen
+    range.addEventListener(
+      "input",
+      updateComparison
+    );
+
+
+    // Startpositie instellen
+    updateComparison();
+
+  }
+
+
+  // =========================
+  // FOOTER JAARTAL
+  // =========================
+
+  const year =
+    document.getElementById("year");
+
+
+  if (year) {
+
+    year.textContent =
+      new Date().getFullYear();
+
+  }
+
+
+  // =========================
+  // CONTACTFORMULIER
+  // =========================
+
+  const contactForm =
+    document.getElementById("contact-form");
+
+  const formStatus =
+    document.getElementById("form-status");
+
+
+  if (contactForm) {
+
+    contactForm.addEventListener(
+      "submit",
+      (event) => {
+
+        event.preventDefault();
+
+
+        if (formStatus) {
+
+          formStatus.textContent =
+            "Bedankt! Je aanvraag is ontvangen.";
+
+        }
+
+      }
+    );
+
+  }
+
+
+  // =========================
+  // MOBIEL MENU
+  // =========================
+
+  const menuButton =
+    document.querySelector(".menu-button");
+
+  const mainNav =
+    document.querySelector(".main-nav");
+
+
+  if (menuButton && mainNav) {
+
+    menuButton.addEventListener(
+      "click",
+      () => {
+
+        const isOpen =
+          menuButton.getAttribute(
+            "aria-expanded"
+          ) === "true";
+
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          String(!isOpen)
+        );
+
+
+        if (isOpen) {
+
+          mainNav.style.display =
+            "";
+
+        } else {
+
+          mainNav.style.display =
+            "flex";
+
+        }
+
+      }
+    );
+
+  }
+
+});
