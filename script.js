@@ -4,11 +4,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // BEFORE / AFTER SLIDER
   // =========================
 
-  const comparison =
-    document.getElementById("image-comparison");
+  const comparison = document.getElementById(
+    "image-comparison"
+  );
 
-  const range =
-    document.getElementById("comparison-range");
+  const range = document.getElementById(
+    "comparison-range"
+  );
 
 
   if (comparison && range) {
@@ -16,16 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateComparison() {
 
       const value = range.value;
-
-      /*
-        De CSS-variabele bepaalt:
-
-        1. Hoeveel van before.png zichtbaar is
-        2. Waar de verticale lijn staat
-
-        De foto's zelf veranderen nooit
-        van positie of grootte.
-      */
 
       comparison.style.setProperty(
         "--comparison-position",
@@ -35,14 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // Update tijdens slepen
     range.addEventListener(
       "input",
       updateComparison
     );
 
 
-    // Startpositie instellen
+    // Startpositie
     updateComparison();
 
   }
@@ -52,9 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // FOOTER JAARTAL
   // =========================
 
-  const year =
-    document.getElementById("year");
-
+  const year = document.getElementById("year");
 
   if (year) {
 
@@ -82,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
       (event) => {
 
         event.preventDefault();
-
 
         if (formStatus) {
 
@@ -128,13 +116,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (isOpen) {
 
-          mainNav.style.display =
-            "";
+          mainNav.style.display = "";
 
         } else {
 
-          mainNav.style.display =
-            "flex";
+          mainNav.style.display = "flex";
 
         }
 
