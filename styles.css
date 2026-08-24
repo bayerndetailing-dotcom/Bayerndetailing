@@ -22,10 +22,9 @@
 
 html {
   min-height: 100%;
-  background-color: #111111 !important;
+  background: #07101d !important;
   scroll-behavior: smooth;
 }
-
 
 body {
   min-height: 100vh;
@@ -48,8 +47,6 @@ body {
       #0a0f18 45%,
       #111111 100%
     ) !important;
-
-  background-color: #0a0f18 !important;
 
   color: #ffffff !important;
 
