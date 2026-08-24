@@ -3,12 +3,13 @@
    ========================= */
 
 :root {
+  --background: #111111;
+  --background-light: #181818;
   --black: #111111;
   --dark: #181818;
   --grey: #a0a0a0;
   --light-grey: rgba(255, 255, 255, 0.12);
   --white: #ffffff;
-  --accent: #d8d8d8;
 
   --max-width: 1280px;
 }
@@ -20,12 +21,15 @@
 
 
 html {
+  min-height: 100%;
+  background-color: #111111 !important;
   scroll-behavior: smooth;
 }
 
 
 body {
-  margin: 0;
+  min-height: 100vh;
+  margin: 0 !important;
 
   background:
     radial-gradient(
@@ -33,9 +37,11 @@ body {
       rgba(255, 255, 255, 0.05),
       transparent 40%
     ),
-    #111111;
+    #111111 !important;
 
-  color: var(--white);
+  background-color: #111111 !important;
+
+  color: #ffffff !important;
 
   font-family:
     Arial,
@@ -43,6 +49,11 @@ body {
     sans-serif;
 
   line-height: 1.6;
+}
+
+
+main {
+  background: transparent !important;
 }
 
 
@@ -96,7 +107,11 @@ textarea {
 
   gap: 30px;
 
-  border-bottom: 1px solid var(--light-grey);
+  background: transparent !important;
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.12);
 }
 
 
@@ -105,12 +120,15 @@ textarea {
   flex-direction: column;
 
   line-height: 1;
+
   letter-spacing: 0.08em;
 }
 
 
 .brand strong {
   font-size: 1.2rem;
+
+  color: #ffffff;
 }
 
 
@@ -118,9 +136,10 @@ textarea {
   margin-top: 5px;
 
   font-size: 0.65rem;
+
   letter-spacing: 0.22em;
 
-  color: var(--grey);
+  color: #a0a0a0;
 }
 
 
@@ -129,6 +148,8 @@ textarea {
   align-items: center;
 
   gap: 28px;
+
+  color: #ffffff;
 
   font-size: 0.9rem;
 }
@@ -147,18 +168,9 @@ textarea {
 .nav-cta {
   padding: 12px 18px;
 
-  background: var(--white);
-  color: var(--black);
+  background: #ffffff !important;
 
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
-}
-
-
-.nav-cta:hover {
-  opacity: 0.85;
-  transform: translateY(-1px);
+  color: #111111 !important;
 }
 
 
@@ -167,10 +179,11 @@ textarea {
 
   padding: 10px 14px;
 
-  border: 1px solid var(--white);
+  border: 1px solid #ffffff;
+
   background: transparent;
 
-  color: var(--white);
+  color: #ffffff;
 
   cursor: pointer;
 }
@@ -206,7 +219,7 @@ textarea {
 
   letter-spacing: 0.15em;
 
-  color: var(--grey);
+  color: #a0a0a0;
 }
 
 
@@ -221,6 +234,8 @@ p {
 h1 {
   margin-bottom: 28px;
 
+  color: #ffffff;
+
   font-size:
     clamp(
       3rem,
@@ -229,6 +244,7 @@ h1 {
     );
 
   line-height: 0.92;
+
   letter-spacing: -0.06em;
 }
 
@@ -239,6 +255,8 @@ h1 span {
 
 
 h2 {
+  color: #ffffff;
+
   font-size:
     clamp(
       2rem,
@@ -247,7 +265,13 @@ h2 {
     );
 
   line-height: 0.95;
+
   letter-spacing: -0.05em;
+}
+
+
+h3 {
+  color: #ffffff;
 }
 
 
@@ -256,7 +280,7 @@ h2 {
 
   font-size: 1.05rem;
 
-  color: var(--grey);
+  color: #a0a0a0;
 }
 
 
@@ -283,8 +307,7 @@ h2 {
 
   transition:
     transform 0.2s ease,
-    opacity 0.2s ease,
-    background 0.2s ease;
+    opacity 0.2s ease;
 }
 
 
@@ -294,8 +317,9 @@ h2 {
 
 
 .primary {
-  background: var(--white);
-  color: var(--black);
+  background: #ffffff !important;
+
+  color: #111111 !important;
 }
 
 
@@ -305,25 +329,27 @@ h2 {
 
 
 .secondary {
-  border: 1px solid var(--white);
+  border: 1px solid #ffffff;
 
   background: transparent;
 
-  color: var(--white);
+  color: #ffffff !important;
 }
 
 
 .secondary:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background:
+    rgba(255, 255, 255, 0.08);
 }
 
 
 /* =========================
-   IMAGE COMPARISON
+   BEFORE / AFTER SLIDER
    ========================= */
 
 .hero-visual {
   width: 100%;
+
   min-width: 0;
 }
 
@@ -350,8 +376,10 @@ h2 {
 
 
 /*
-  Beide foto's liggen volledig
-  op exact dezelfde positie.
+  Beide foto's staan exact
+  op dezelfde positie.
+
+  Ze bewegen nooit.
 */
 
 .comparison-image {
@@ -368,6 +396,7 @@ h2 {
   display: block;
 
   object-fit: cover;
+
   object-position: center;
 
   pointer-events: none;
@@ -376,7 +405,7 @@ h2 {
 }
 
 
-/* AFTER ligt onderaan */
+/* AFTER: onderste foto */
 
 .comparison-after {
   z-index: 1;
@@ -384,10 +413,9 @@ h2 {
 
 
 /*
-  BEFORE ligt bovenop.
+  BEFORE: bovenste foto.
 
-  De foto zelf beweegt nooit.
-  Alleen het zichtbare deel
+  Alleen het zichtbare gedeelte
   wordt weggeknipt.
 */
 
@@ -404,7 +432,7 @@ h2 {
 }
 
 
-/* Verticale sliderlijn */
+/* Scheidingslijn */
 
 .comparison-divider {
   position: absolute;
@@ -416,7 +444,7 @@ h2 {
 
   width: 3px;
 
-  background: var(--white);
+  background: #ffffff;
 
   transform: translateX(-50%);
 
@@ -426,7 +454,7 @@ h2 {
 }
 
 
-/* Sliderknop */
+/* Ronde sliderknop */
 
 .comparison-handle {
   position: absolute;
@@ -437,12 +465,14 @@ h2 {
   width: 58px;
   height: 58px;
 
-  border: 3px solid var(--white);
+  border: 3px solid #ffffff;
+
   border-radius: 50%;
 
-  background: var(--black);
+  background: #111111;
 
-  transform: translate(-50%, -50%);
+  transform:
+    translate(-50%, -50%);
 
   display: flex;
   align-items: center;
@@ -456,29 +486,37 @@ h2 {
 }
 
 
-/* Sliderpijlen */
+/* Pijlen */
 
 .comparison-arrow {
   width: 0;
   height: 0;
 
-  border-top: 7px solid transparent;
-  border-bottom: 7px solid transparent;
+  border-top:
+    7px solid transparent;
+
+  border-bottom:
+    7px solid transparent;
 }
 
 
 .comparison-arrow.left {
-  border-right: 10px solid var(--white);
+  border-right:
+    10px solid #ffffff;
 }
 
 
 .comparison-arrow.right {
-  border-left: 10px solid var(--white);
+  border-left:
+    10px solid #ffffff;
 }
 
 
 /*
-  Onzichtbare interactieve slider.
+  De echte interactieve slider.
+
+  Deze ligt onzichtbaar
+  boven de foto's.
 */
 
 .comparison-range {
@@ -517,7 +555,7 @@ h2 {
 .intro p:last-child {
   max-width: 650px;
 
-  color: var(--grey);
+  color: #a0a0a0;
 }
 
 
@@ -547,14 +585,16 @@ h2 {
 
   padding: 45px 0;
 
-  border-top: 1px solid var(--light-grey);
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.12);
 }
 
 
 .service-card b {
   font-size: 0.9rem;
 
-  color: var(--grey);
+  color: #a0a0a0;
 }
 
 
@@ -562,6 +602,7 @@ h2 {
   margin-bottom: 15px;
 
   font-size: 2rem;
+
   letter-spacing: -0.04em;
 }
 
@@ -569,7 +610,7 @@ h2 {
 .service-card p {
   max-width: 700px;
 
-  color: var(--grey);
+  color: #a0a0a0;
 }
 
 
@@ -578,7 +619,7 @@ h2 {
 
   padding-left: 20px;
 
-  color: #cfcfcf;
+  color: #d0d0d0;
 }
 
 
@@ -608,7 +649,7 @@ h2 {
 
 
 .split p:last-child {
-  color: var(--grey);
+  color: #a0a0a0;
 }
 
 
@@ -619,13 +660,16 @@ h2 {
   align-items: center;
   justify-content: center;
 
-  background: #1b1b1b;
+  background: #1b1b1b !important;
 
-  border: 1px solid var(--light-grey);
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.12);
 
-  color: var(--grey);
+  color: #a0a0a0;
 
   font-size: 0.8rem;
+
   letter-spacing: 0.1em;
 }
 
@@ -698,7 +742,10 @@ label {
 
   gap: 8px;
 
+  color: #ffffff;
+
   font-size: 0.9rem;
+
   font-weight: 700;
 }
 
@@ -714,9 +761,9 @@ textarea {
     1px solid
     rgba(255, 255, 255, 0.2);
 
-  background: #1a1a1a;
+  background: #1a1a1a !important;
 
-  color: var(--white);
+  color: #ffffff !important;
 }
 
 
@@ -732,7 +779,8 @@ textarea:focus {
 
 select option {
   background: #1a1a1a;
-  color: var(--white);
+
+  color: #ffffff;
 }
 
 
@@ -744,7 +792,7 @@ textarea {
 #form-status {
   margin: 0;
 
-  color: var(--grey);
+  color: #a0a0a0;
 }
 
 
@@ -762,7 +810,11 @@ footer {
 
   padding: 50px 0;
 
-  border-top: 1px solid var(--light-grey);
+  background: transparent !important;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.12);
 
   display: flex;
   align-items: center;
@@ -776,7 +828,7 @@ footer p,
 footer small {
   margin: 0;
 
-  color: var(--grey);
+  color: #a0a0a0;
 }
 
 
@@ -849,17 +901,19 @@ footer small {
     position: absolute;
 
     top: calc(100% + 1px);
+
     left: 0;
     right: 0;
 
     flex-direction: column;
+
     align-items: stretch;
 
     gap: 0;
 
     padding: 15px;
 
-    background: #111111;
+    background: #111111 !important;
 
     border:
       1px solid
