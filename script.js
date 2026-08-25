@@ -4,35 +4,223 @@ document.addEventListener("DOMContentLoaded", () => {
   // BEFORE / AFTER SLIDER
   // =========================
 
-  const comparison =
-    document.getElementById("image-comparison");
+  const slider = document.getElementById("compare-slider");
+  const before = document.getElementById("compare-before");
+  const divider = document.getElementById("compare-divider");
+  const handle = document.getElementById("compare-handle");
 
-  const range =
-    document.getElementById("comparison-range");
+  if (slider && before && divider) {
+
+    let position = 50;
+    let isDragging = false;
 
 
-  if (comparison && range) {
+    function updateSlider(value) {
 
-    function updateComparison() {
-
-      const value = range.value;
-
-      comparison.style.setProperty(
-        "--comparison-position",
-        `${value}%`
+      // Zorg dat de waarde altijd tussen 0 en 100 blijft
+      position = Math.max(
+        0,
+        Math.min(100, value)
       );
+
+      /*
+        De BEFORE-foto ligt volledig boven de AFTER-foto.
+
+        Alleen het zichtbare deel wordt aangepast.
+        De foto zelf beweegt NIET.
+      */
+
+      before.style.clipPath =
+        `inset(
+          0
+          ${100 - position}%
+          0
+          0
+        )`;
+
+      divider.style.left =
+        `${position}%`;
+
+      if (handle) {
+        handle.setAttribute(
+          "aria-valuenow",
+          Math.round(position)
+        );
+      }
 
     }
 
 
-    range.addEventListener(
-      "input",
-      updateComparison
+    function getPosition(event) {
+
+      const rect =
+        slider.getBoundingClientRect();
+
+      let clientX;
+
+      if (
+        event.touches &&
+        event.touches.length > 0
+      ) {
+
+        clientX =
+          event.touches[0].clientX;
+
+      } else {
+
+        clientX =
+          event.clientX;
+
+      }
+
+      const x =
+        clientX - rect.left;
+
+      return (
+        x / rect.width
+      ) * 100;
+
+    }
+
+
+    // Klikken op de afbeelding
+    slider.addEventListener(
+      "pointerdown",
+      (event) => {
+
+        isDragging = true;
+
+        slider.setPointerCapture(
+          event.pointerId
+        );
+
+        updateSlider(
+          getPosition(event)
+        );
+
+      }
+    );
+
+
+    // Slepen
+    slider.addEventListener(
+      "pointermove",
+      (event) => {
+
+        if (!isDragging) {
+          return;
+        }
+
+        updateSlider(
+          getPosition(event)
+        );
+
+      }
+    );
+
+
+    // Loslaten
+    slider.addEventListener(
+      "pointerup",
+      () => {
+
+        isDragging = false;
+
+      }
+    );
+
+
+    slider.addEventListener(
+      "pointercancel",
+      () => {
+
+        isDragging = false;
+
+      }
     );
 
 
     // Startpositie
-    updateComparison();
+    updateSlider(50);
+
+  }
+
+
+  // =========================
+  // CONTACTFORMULIER
+  // =========================
+
+  const contactForm =
+    document.getElementById("contact-form");
+
+  const formStatus =
+    document.getElementById("form-status");
+
+  const serviceOptions =
+    document.querySelectorAll(
+      'input[name="services"]:checked'
+    );
+
+
+  if (contactForm) {
+
+    contactForm.addEventListener(
+      "submit",
+      (event) => {
+
+        /*
+          Zoek opnieuw op het moment
+          dat het formulier wordt verstuurd.
+
+          Dit is belangrijk, omdat een
+          eerdere querySelectorAll anders
+          niet altijd de huidige selectie
+          gebruikt.
+        */
+
+        const selectedServices =
+          contactForm.querySelectorAll(
+            'input[name="services"]:checked'
+          );
+
+
+        // Geen behandeling geselecteerd
+        if (
+          selectedServices.length === 0
+        ) {
+
+          event.preventDefault();
+
+          if (formStatus) {
+
+            formStatus.textContent =
+              "Selecteer minimaal één gewenste behandeling.";
+
+          }
+
+          return;
+
+        }
+
+
+        /*
+          Hier komt geen preventDefault
+          als je een externe formulierdienst
+          gebruikt.
+
+          Daardoor kan het formulier normaal
+          worden verstuurd naar je e-mailservice.
+        */
+
+        if (formStatus) {
+
+          formStatus.textContent =
+            "Aanvraag wordt verstuurd...";
+
+        }
+
+      }
+    );
 
   }
 
@@ -54,138 +242,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   // =========================
-  // CONTACTFORMULIER
-  // =========================
-
-  const contactForm =
-    document.getElementById("contact-form");
-
-  const formStatus =
-    document.getElementById("form-status");
-
-
-  if (contactForm) {
-
-    contactForm.addEventListener(
-      "submit",
-      async (event) => {
-
-        event.preventDefault();
-
-
-        if (formStatus) {
-
-          formStatus.textContent =
-            "Aanvraag wordt verstuurd...";
-
-        }
-
-
-        // Geselecteerde services verzamelen
-
-        const selectedServices =
-          Array.from(
-            contactForm.querySelectorAll(
-              'input[name="services[]"]:checked'
-            )
-          ).map(
-            (checkbox) => checkbox.value
-          );
-
-
-        // Controleer of minstens
-        // één service is gekozen
-
-        if (selectedServices.length === 0) {
-
-          if (formStatus) {
-
-            formStatus.textContent =
-              "Selecteer minimaal één gewenste behandeling.";
-
-          }
-
-          return;
-
-        }
-
-
-        // Formuliergegevens ophalen
-
-        const formData =
-          new FormData(contactForm);
-
-
-        // services[] vervangen
-        // door één leesbare tekst
-
-        formData.delete("services[]");
-
-        formData.append(
-          "services",
-          selectedServices.join(", ")
-        );
-
-
-        try {
-
-          const response =
-            await fetch(
-              "https://api.web3forms.com/submit",
-              {
-                method: "POST",
-
-                body: formData
-              }
-            );
-
-
-          const result =
-            await response.json();
-
-
-          if (result.success) {
-
-            if (formStatus) {
-
-              formStatus.textContent =
-                "Bedankt! Je aanvraag is succesvol verstuurd.";
-
-            }
-
-
-            contactForm.reset();
-
-          } else {
-
-            if (formStatus) {
-
-              formStatus.textContent =
-                result.message ||
-                "Er ging iets mis. Probeer het opnieuw.";
-
-            }
-
-          }
-
-        } catch (error) {
-
-          if (formStatus) {
-
-            formStatus.textContent =
-              "Er kon geen verbinding worden gemaakt. Probeer het later opnieuw.";
-
-          }
-
-        }
-
-      }
-    );
-
-  }
-
-
-  // =========================
   // MOBIEL MENU
   // =========================
 
@@ -196,19 +252,30 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".main-nav");
 
 
-  if (menuButton && mainNav) {
+  if (
+    menuButton &&
+    mainNav
+  ) {
 
     menuButton.addEventListener(
       "click",
       () => {
 
         const isOpen =
-          mainNav.classList.toggle("open");
+          menuButton.getAttribute(
+            "aria-expanded"
+          ) === "true";
 
 
         menuButton.setAttribute(
           "aria-expanded",
-          String(isOpen)
+          String(!isOpen)
+        );
+
+
+        mainNav.classList.toggle(
+          "open",
+          !isOpen
         );
 
       }
