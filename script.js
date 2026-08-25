@@ -1,109 +1,94 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  // =========================
-  // BEFORE / AFTER SLIDER
-  // =========================
+  /* =========================
+     BEFORE / AFTER SLIDER
+     ========================= */
 
-  const slider = document.getElementById("compare-slider");
-  const before = document.getElementById("compare-before");
-  const divider = document.getElementById("compare-divider");
-  const handle = document.getElementById("compare-handle");
+  const compareSlider =
+    document.getElementById("compare-slider");
 
-  if (slider && before && divider) {
+  const compareBefore =
+    document.getElementById("compare-before");
 
-    let position = 50;
+  const compareDivider =
+    document.getElementById("compare-divider");
+
+  const compareHandle =
+    document.getElementById("compare-handle");
+
+
+  if (
+    compareSlider &&
+    compareBefore &&
+    compareDivider
+  ) {
+
     let isDragging = false;
 
 
-    function updateSlider(value) {
+    function updateSlider(clientX) {
 
-      // Zorg dat de waarde altijd tussen 0 en 100 blijft
-      position = Math.max(
-        0,
-        Math.min(100, value)
-      );
+      const rect =
+        compareSlider.getBoundingClientRect();
+
+
+      let position =
+        ((clientX - rect.left) / rect.width) * 100;
+
+
+      position =
+        Math.max(
+          0,
+          Math.min(100, position)
+        );
+
 
       /*
-        De BEFORE-foto ligt volledig boven de AFTER-foto.
+        Alleen het zichtbare deel van
+        before.png verandert.
 
-        Alleen het zichtbare deel wordt aangepast.
-        De foto zelf beweegt NIET.
+        De foto's zelf bewegen niet.
       */
 
-      before.style.clipPath =
-        `inset(
-          0
-          ${100 - position}%
-          0
-          0
-        )`;
+      compareBefore.style.clipPath =
+        `inset(0 ${100 - position}% 0 0)`;
 
-      divider.style.left =
+
+      compareDivider.style.left =
         `${position}%`;
 
-      if (handle) {
-        handle.setAttribute(
+
+      if (compareHandle) {
+
+        compareHandle.setAttribute(
           "aria-valuenow",
           Math.round(position)
         );
+
       }
 
     }
 
 
-    function getPosition(event) {
-
-      const rect =
-        slider.getBoundingClientRect();
-
-      let clientX;
-
-      if (
-        event.touches &&
-        event.touches.length > 0
-      ) {
-
-        clientX =
-          event.touches[0].clientX;
-
-      } else {
-
-        clientX =
-          event.clientX;
-
-      }
-
-      const x =
-        clientX - rect.left;
-
-      return (
-        x / rect.width
-      ) * 100;
-
-    }
-
-
-    // Klikken op de afbeelding
-    slider.addEventListener(
+    compareSlider.addEventListener(
       "pointerdown",
       (event) => {
 
         isDragging = true;
 
-        slider.setPointerCapture(
+        compareSlider.setPointerCapture(
           event.pointerId
         );
 
         updateSlider(
-          getPosition(event)
+          event.clientX
         );
 
       }
     );
 
 
-    // Slepen
-    slider.addEventListener(
+    compareSlider.addEventListener(
       "pointermove",
       (event) => {
 
@@ -111,16 +96,16 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
 
+
         updateSlider(
-          getPosition(event)
+          event.clientX
         );
 
       }
     );
 
 
-    // Loslaten
-    slider.addEventListener(
+    compareSlider.addEventListener(
       "pointerup",
       () => {
 
@@ -130,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    slider.addEventListener(
+    compareSlider.addEventListener(
       "pointercancel",
       () => {
 
@@ -140,15 +125,22 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    // Startpositie
-    updateSlider(50);
+    compareSlider.addEventListener(
+      "pointerleave",
+      () => {
+
+        isDragging = false;
+
+      }
+    );
 
   }
 
 
-  // =========================
-  // CONTACTFORMULIER
-  // =========================
+
+  /* =========================
+     CONTACTFORMULIER
+     ========================= */
 
   const contactForm =
     document.getElementById("contact-form");
@@ -156,26 +148,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const formStatus =
     document.getElementById("form-status");
 
-  const serviceOptions =
-    document.querySelectorAll(
-      'input[name="services"]:checked'
-    );
-
 
   if (contactForm) {
 
     contactForm.addEventListener(
       "submit",
-      (event) => {
+      async (event) => {
+
+        event.preventDefault();
+
 
         /*
-          Zoek opnieuw op het moment
-          dat het formulier wordt verstuurd.
-
-          Dit is belangrijk, omdat een
-          eerdere querySelectorAll anders
-          niet altijd de huidige selectie
-          gebruikt.
+          Controleer of minstens één
+          behandeling is geselecteerd.
         */
 
         const selectedServices =
@@ -184,17 +169,17 @@ document.addEventListener("DOMContentLoaded", () => {
           );
 
 
-        // Geen behandeling geselecteerd
         if (
           selectedServices.length === 0
         ) {
-
-          event.preventDefault();
 
           if (formStatus) {
 
             formStatus.textContent =
               "Selecteer minimaal één gewenste behandeling.";
+
+            formStatus.style.color =
+              "#ff8a8a";
 
           }
 
@@ -203,19 +188,120 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        /*
-          Hier komt geen preventDefault
-          als je een externe formulierdienst
-          gebruikt.
-
-          Daardoor kan het formulier normaal
-          worden verstuurd naar je e-mailservice.
-        */
-
         if (formStatus) {
 
           formStatus.textContent =
-            "Aanvraag wordt verstuurd...";
+            "Je aanvraag wordt verstuurd...";
+
+          formStatus.style.color =
+            "#aeb4bc";
+
+        }
+
+
+        /*
+          Verzamel alle formuliergegevens
+        */
+
+        const formData =
+          new FormData(contactForm);
+
+
+        try {
+
+          const response =
+            await fetch(
+              "https://formspree.io/f/mzepndra",
+              {
+                method: "POST",
+
+                body: formData,
+
+                headers: {
+                  Accept: "application/json"
+                }
+              }
+            );
+
+
+          if (response.ok) {
+
+            /*
+              Formulier leegmaken
+            */
+
+            contactForm.reset();
+
+
+            if (formStatus) {
+
+              formStatus.textContent =
+                "Bedankt! Je aanvraag is succesvol verstuurd. We nemen zo snel mogelijk contact met je op.";
+
+              formStatus.style.color =
+                "#8ed0a1";
+
+            }
+
+          } else {
+
+            let errorMessage =
+              "Er is iets misgegaan bij het versturen. Probeer het opnieuw.";
+
+
+            try {
+
+              const data =
+                await response.json();
+
+
+              if (
+                data.errors &&
+                data.errors.length > 0
+              ) {
+
+                errorMessage =
+                  data.errors
+                    .map(
+                      error => error.message
+                    )
+                    .join(", ");
+
+              }
+
+            } catch (error) {
+
+              console.error(error);
+
+            }
+
+
+            if (formStatus) {
+
+              formStatus.textContent =
+                errorMessage;
+
+              formStatus.style.color =
+                "#ff8a8a";
+
+            }
+
+          }
+
+        } catch (error) {
+
+          console.error(error);
+
+
+          if (formStatus) {
+
+            formStatus.textContent =
+              "Er kon geen verbinding worden gemaakt. Controleer je internetverbinding en probeer het opnieuw.";
+
+            formStatus.style.color =
+              "#ff8a8a";
+
+          }
 
         }
 
@@ -225,9 +311,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  // =========================
-  // FOOTER JAARTAL
-  // =========================
+
+  /* =========================
+     FOOTER JAARTAL
+     ========================= */
 
   const year =
     document.getElementById("year");
@@ -241,15 +328,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  // =========================
-  // MOBIEL MENU
-  // =========================
+
+  /* =========================
+     MOBIEL MENU
+     ========================= */
 
   const menuButton =
-    document.querySelector(".menu-button");
+    document.querySelector(
+      ".menu-button"
+    );
+
 
   const mainNav =
-    document.querySelector(".main-nav");
+    document.querySelector(
+      ".main-nav"
+    );
 
 
   if (
