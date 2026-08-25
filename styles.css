@@ -4,45 +4,42 @@
 
 :root {
   --background: #0b0c0e;
-  --background-soft: #101216;
-  --background-card: #15191e;
+  --background-alt: #101216;
+  --surface: #15191e;
+  --surface-light: #1b2027;
 
   --text: #f2f3f3;
   --text-muted: #aeb4bc;
 
   --blue: #2f7fc1;
-  --blue-light: #4d9ddd;
+  --blue-light: #4b91c9;
 
-  --border: #2b3036;
+  --border: #2a2f35;
   --border-light: #30363d;
-
-  --white: #ffffff;
 }
-
 
 * {
   box-sizing: border-box;
 }
 
-
 html {
   scroll-behavior: smooth;
 }
 
-
 body {
   margin: 0;
+  min-width: 320px;
 
   background:
     radial-gradient(
-      circle at 80% 10%,
-      rgba(47, 127, 193, 0.16),
-      transparent 32%
+      circle at 75% 15%,
+      rgba(47, 127, 193, 0.12),
+      transparent 28%
     ),
     radial-gradient(
-      circle at 10% 60%,
-      rgba(24, 75, 120, 0.10),
-      transparent 40%
+      circle at 20% 80%,
+      rgba(20, 70, 120, 0.08),
+      transparent 35%
     ),
     var(--background);
 
@@ -54,26 +51,16 @@ body {
     sans-serif;
 
   line-height: 1.6;
-
-  overflow-x: hidden;
 }
-
-
-/* =========================
-   ALGEMEEN
-   ========================= */
 
 img {
   max-width: 100%;
 }
 
-
 a {
   color: inherit;
-
   text-decoration: none;
 }
-
 
 button,
 input,
@@ -82,6 +69,14 @@ textarea {
   font: inherit;
 }
 
+button {
+  cursor: pointer;
+}
+
+
+/* =========================
+   ALGEMENE SECTIES
+   ========================= */
 
 .section {
   padding:
@@ -96,15 +91,11 @@ textarea {
 
 .site-header {
   position: sticky;
-
   top: 0;
-
   z-index: 100;
 
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
 
   padding:
@@ -112,35 +103,21 @@ textarea {
     max(5vw, 32px);
 
   background:
-    rgba(
-      11,
-      12,
-      14,
-      0.88
-    );
+    rgba(11, 12, 14, 0.88);
 
   backdrop-filter:
     blur(14px);
 
   border-bottom:
     1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.07
-    );
+    rgba(255, 255, 255, 0.07);
 }
-
 
 .brand {
   display: inline-flex;
-
   flex-direction: column;
 
-  color: var(--white);
-
-  text-decoration: none;
+  color: #ffffff;
 
   font-family:
     "Space Grotesk",
@@ -154,45 +131,40 @@ textarea {
   line-height: 1;
 }
 
+.brand strong {
+  font-size: 1rem;
+}
 
-.brand span {
+.brand span,
+.brand small {
   margin-top: 5px;
 
   font-size: 0.58rem;
 
   letter-spacing: 0.32em;
 
-  color: var(--text-muted);
+  color: #b9bec5;
 }
-
 
 .main-nav {
   display: flex;
+  align-items: center;
 
   gap: 28px;
-
-  align-items: center;
 }
-
 
 .main-nav a {
   color: #b9bec5;
 
-  text-decoration: none;
-
   font-size: 0.9rem;
 
   transition:
-    color
-    0.2s
-    ease;
+    color 0.2s ease;
 }
-
 
 .main-nav a:hover {
-  color: var(--white);
+  color: #ffffff;
 }
-
 
 .nav-cta {
   padding:
@@ -201,31 +173,24 @@ textarea {
 
   border:
     1px solid
-    var(--blue)
-    !important;
+    var(--blue);
 
-  color:
-    var(--white)
-    !important;
+  color: #ffffff !important;
 }
-
 
 .menu-button {
   display: none;
-
-  background: transparent;
-
-  color: var(--white);
-
-  border:
-    1px solid
-    #444;
 
   padding:
     8px
     12px;
 
-  cursor: pointer;
+  background: transparent;
+
+  border:
+    1px solid #444;
+
+  color: #ffffff;
 }
 
 
@@ -235,9 +200,7 @@ textarea {
 
 .hero {
   min-height:
-    calc(
-      100vh - 77px
-    );
+    calc(100vh - 77px);
 
   display: grid;
 
@@ -249,7 +212,6 @@ textarea {
 
   align-items: center;
 }
-
 
 .eyebrow {
   margin:
@@ -266,7 +228,6 @@ textarea {
   letter-spacing: 0.18em;
 }
 
-
 .hero h1,
 h2,
 h3 {
@@ -278,8 +239,9 @@ h3 {
   line-height: 1.02;
 }
 
-
 .hero h1 {
+  margin: 0;
+
   font-size:
     clamp(
       3.5rem,
@@ -287,42 +249,32 @@ h3 {
       7.8rem
     );
 
-  margin: 0;
-
-  letter-spacing: -0.06em;
+  letter-spacing:
+    -0.06em;
 }
-
 
 .hero h1 span {
   color: var(--blue);
 }
 
-
 .lead {
   max-width: 640px;
-
-  color: #b9bec5;
-
-  font-size: 1.08rem;
 
   margin:
     28px
     0;
-}
 
+  color: var(--text-muted);
+
+  font-size: 1.08rem;
+}
 
 .hero-actions {
   display: flex;
+  flex-wrap: wrap;
 
   gap: 14px;
-
-  flex-wrap: wrap;
 }
-
-
-/* =========================
-   BUTTONS
-   ========================= */
 
 .button {
   display: inline-block;
@@ -331,61 +283,40 @@ h3 {
     15px
     21px;
 
-  text-decoration: none;
-
   border:
-    1px solid
-    transparent;
+    1px solid transparent;
 
   font-weight: 600;
 
   font-size: 0.9rem;
 
-  cursor: pointer;
-
   transition:
-    background
-    0.2s
-    ease,
-    border-color
-    0.2s
-    ease;
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
-
-.button-primary,
-.primary {
+.primary,
+.button-primary {
   background: var(--blue);
 
-  color: var(--white);
-
-  border-color: var(--blue);
+  color: #ffffff;
 }
 
-
-.button-primary:hover,
-.primary:hover {
+.primary:hover,
+.button-primary:hover {
   background: var(--blue-light);
-
-  border-color: var(--blue-light);
 }
 
-
-.button-secondary,
-.secondary {
+.secondary,
+.button-secondary {
   border-color: #4a4f56;
 
-  color: var(--white);
-
-  background: transparent;
+  color: #ffffff;
 }
 
-
-.button-secondary:hover,
-.secondary:hover {
+.secondary:hover,
+.button-secondary:hover {
   border-color: var(--blue);
-
-  color: var(--blue-light);
 }
 
 
@@ -397,15 +328,11 @@ h3 {
   min-height: 600px;
 }
 
-
-.compare-slider,
-.image-comparison {
-  --comparison-position: 50%;
-
+.image-comparison,
+.compare-slider {
   position: relative;
 
   width: 100%;
-
   height: 600px;
 
   overflow: hidden;
@@ -414,36 +341,39 @@ h3 {
 
   border:
     1px solid
-    var(--border);
+    #2b3036;
 
   user-select: none;
 
   touch-action: none;
-
-  box-shadow:
-    0
-    30px
-    80px
-    rgba(
-      0,
-      0,
-      0,
-      0.35
-    );
 }
 
 
+/*
+   Beide foto's liggen exact
+   op dezelfde positie.
+
+   BELANGRIJK:
+   object-fit: contain voorkomt
+   inzoomen en afsnijden.
+*/
+
+.image-comparison img,
 .compare-slider img,
-.comparison-image {
+.comparison-image,
+.compare-image {
   position: absolute;
 
   inset: 0;
 
   width: 100%;
-
   height: 100%;
 
-  object-fit: cover;
+  max-width: none;
+
+  object-fit: contain;
+
+  object-position: center;
 
   display: block;
 
@@ -453,105 +383,60 @@ h3 {
 }
 
 
-/*
-  ONDERSTE FOTO
-*/
+/* Onderste foto */
 
-.compare-after,
-.comparison-after {
+.comparison-after,
+.compare-after {
   z-index: 1;
 }
 
 
 /*
-  BOVENSTE FOTO
+   Bovenste foto.
+
+   De foto zelf beweegt nooit.
+   Alleen het zichtbare deel
+   wordt door JavaScript aangepast.
 */
 
-.compare-before,
-.comparison-before {
+.comparison-before,
+.compare-before {
   position: absolute;
 
-  inset:
-    0
-    auto
-    0
-    0;
+  inset: 0;
 
-  z-index: 2;
-
-  width:
-    var(
-      --comparison-position
-    );
-
+  width: 100%;
   height: 100%;
 
   overflow: hidden;
+
+  z-index: 2;
+
+  clip-path:
+    inset(
+      0
+      50%
+      0
+      0
+    );
 }
 
 
-/*
-  BELANGRIJK:
-  De bovenste afbeelding blijft
-  altijd even groot als de slider.
+/* Verticale scheidingslijn */
 
-  Hij beweegt niet mee.
-*/
-
-.compare-before img,
-.comparison-before {
-  width: 100%;
-  height: 100%;
-}
-
-
-/*
-  De before afbeelding binnen
-  de clipping container.
-*/
-
-.compare-before img {
+.comparison-divider,
+.compare-divider {
   position: absolute;
 
   top: 0;
-  left: 0;
-
-  width: 100vw;
-
-  max-width: none;
-
-  height: 600px;
-
-  object-fit: cover;
-}
-
-
-/*
-  Scheidingslijn
-*/
-
-.compare-line,
-.comparison-divider {
-  position: absolute;
-
-  top: 0;
-
   bottom: 0;
 
-  left:
-    var(
-      --comparison-position
-    );
+  left: 50%;
 
   width: 2px;
 
   background:
-    rgba(
-      255,
-      255,
-      255,
-      0.92
-    );
+    rgba(255, 255, 255, 0.92);
 
   transform:
     translateX(-50%);
@@ -562,38 +447,23 @@ h3 {
 }
 
 
-/*
-  Slider knop
-*/
+/* Slider knop */
 
-.compare-handle,
-.comparison-handle {
+.comparison-handle,
+.compare-handle {
   position: absolute;
 
+  top: 50%;
   left: 50%;
 
-  top: 50%;
-
-  transform:
-    translate(
-      -50%,
-      -50%
-    );
-
   width: 58px;
-
   height: 58px;
 
   border-radius: 50%;
 
   border:
     2px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.9
-    );
+    rgba(255, 255, 255, 0.9);
 
   background: #171a1f;
 
@@ -601,43 +471,33 @@ h3 {
     0
     8px
     24px
-    rgba(
-      0,
-      0,
-      0,
-      0.35
-    );
+    rgba(0, 0, 0, 0.35);
 
-  cursor: ew-resize;
+  transform:
+    translate(-50%, -50%);
 
   z-index: 5;
 }
 
 
-/*
-  Pijlen in slider knop
-*/
+/* Pijlen in slider */
 
-.compare-handle span {
+.compare-handle i {
   position: absolute;
 
   top: 50%;
 
   width: 9px;
-
   height: 9px;
 
   border-top:
-    2px solid
-    var(--white);
+    2px solid #ffffff;
 
   border-right:
-    2px solid
-    var(--white);
+    2px solid #ffffff;
 }
 
-
-.compare-handle span:first-child {
+.compare-handle i:first-child {
   left: 17px;
 
   transform:
@@ -645,8 +505,7 @@ h3 {
     rotate(-135deg);
 }
 
-
-.compare-handle span:last-child {
+.compare-handle i:last-child {
   right: 17px;
 
   transform:
@@ -659,15 +518,19 @@ h3 {
    INTRO
    ========================= */
 
-.narrow {
+.intro {
   max-width: 1000px;
 }
-
 
 .intro h2,
 .section-heading h2,
 .split h2,
 .contact h2 {
+  margin:
+    0
+    0
+    25px;
+
   font-size:
     clamp(
       2.4rem,
@@ -675,21 +538,14 @@ h3 {
       5.4rem
     );
 
-  letter-spacing: -0.05em;
-
-  margin:
-    0
-    0
-    25px;
+  letter-spacing:
+    -0.05em;
 }
 
-
-.intro p:not(.eyebrow),
-.split p:not(.eyebrow),
-.contact-copy p:not(.eyebrow) {
-  color: var(--text-muted);
-
+.intro p:not(.eyebrow) {
   max-width: 720px;
+
+  color: var(--text-muted);
 
   font-size: 1.05rem;
 }
@@ -701,37 +557,12 @@ h3 {
 
 .services {
   background:
-    rgba(
-      16,
-      18,
-      22,
-      0.8
-    );
-
-  border-top:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.03
-    );
-
-  border-bottom:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.03
-    );
+    rgba(16, 18, 22, 0.85);
 }
-
 
 .section-heading {
   margin-bottom: 55px;
 }
-
 
 .service-card {
   display: grid;
@@ -748,16 +579,14 @@ h3 {
 
   border-top:
     1px solid
-    #2a2f35;
+    var(--border);
 }
-
 
 .service-card:last-child {
   border-bottom:
     1px solid
-    #2a2f35;
+    var(--border);
 }
-
 
 .service-card b,
 .service-number {
@@ -771,22 +600,19 @@ h3 {
   font-size: 1.15rem;
 }
 
-
 .service-card h3 {
-  font-size: 2.2rem;
-
   margin:
     0
     0
     14px;
-}
 
+  font-size: 2.2rem;
+}
 
 .service-card p,
 .service-card li {
   color: var(--text-muted);
 }
-
 
 .service-card ul {
   padding-left: 18px;
@@ -809,22 +635,17 @@ h3 {
   align-items: center;
 }
 
-
-.split-visual {
-  min-height: 620px;
+.split p:not(.eyebrow) {
+  color: var(--text-muted);
 }
 
-
-.placeholder,
-.placeholder-image {
+.placeholder {
   position: relative;
 
   min-height: 400px;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   overflow: hidden;
@@ -838,60 +659,14 @@ h3 {
 
   border:
     1px solid
-    var(--border);
+    #2b3036;
 
-  color: var(--text-muted);
+  color:
+    var(--text-muted);
 
   font-size: 0.8rem;
 
   letter-spacing: 0.1em;
-}
-
-
-.image-label {
-  position: absolute;
-
-  left: 26px;
-
-  bottom: 26px;
-
-  z-index: 1;
-
-  font-family:
-    "Space Grotesk",
-    Arial,
-    sans-serif;
-
-  letter-spacing: 0.08em;
-}
-
-
-.image-label small {
-  display: block;
-
-  margin-top: 7px;
-
-  color: #9ea4ab;
-
-  font-family:
-    Inter,
-    Arial,
-    sans-serif;
-
-  letter-spacing: 0;
-}
-
-
-.text-link {
-  color: var(--white);
-
-  text-decoration: none;
-
-  border-bottom:
-    1px solid
-    var(--blue);
-
-  padding-bottom: 5px;
 }
 
 
@@ -901,64 +676,16 @@ h3 {
 
 .portfolio {
   background:
-    rgba(
-      16,
-      18,
-      22,
-      0.65
-    );
+    rgba(16, 18, 22, 0.85);
 }
-
 
 .portfolio-grid {
   display: grid;
 
   grid-template-columns:
-    repeat(
-      3,
-      1fr
-    );
+    repeat(3, 1fr);
 
   gap: 18px;
-}
-
-
-.portfolio-item {
-  min-height: 430px;
-
-  padding: 24px;
-
-  display: flex;
-
-  align-items: flex-end;
-}
-
-
-.portfolio-item div {
-  position: relative;
-
-  z-index: 1;
-}
-
-
-.portfolio-item strong {
-  display: block;
-
-  font-family:
-    "Space Grotesk",
-    Arial,
-    sans-serif;
-
-  font-size: 1.2rem;
-}
-
-
-.portfolio-item span {
-  display: block;
-
-  color: var(--text-muted);
-
-  font-size: 0.86rem;
 }
 
 
@@ -976,21 +703,30 @@ h3 {
   gap: 8vw;
 
   background:
-    rgba(
-      15,
-      17,
-      21,
-      0.8
-    );
+    transparent;
+}
+
+.contact-copy {
+  align-self: start;
+}
+
+.contact-copy p:not(.eyebrow) {
+  color: var(--text-muted);
 }
 
 
-.contact-form {
+/* =========================
+   CONTACTFORMULIER
+   ========================= */
+
+.contact-form,
+#contact-form {
   display: grid;
 
   gap: 18px;
-}
 
+  color: var(--text);
+}
 
 .form-row {
   display: grid;
@@ -1003,25 +739,29 @@ h3 {
 }
 
 
-label {
-  display: grid;
+/* Normale labels */
+
+.contact-form > label,
+#contact-form > label,
+.form-row > label {
+  display: flex;
+  flex-direction: column;
 
   gap: 8px;
 
-  font-size: 0.85rem;
-
   color: #c6cbd1;
+
+  font-size: 0.85rem;
 }
 
 
+/* =========================
+   TEKSTVELDEN
+   ========================= */
+
 /*
-  BELANGRIJK:
-
-  Checkboxen worden hier
-  expliciet uitgesloten.
-
-  Dit voorkomt het grote,
-  losse hokje bovenaan.
+   Checkboxen worden hier
+   bewust uitgesloten.
 */
 
 input:not([type="checkbox"]),
@@ -1029,158 +769,164 @@ select,
 textarea {
   width: 100%;
 
-  background: #15191e;
+  background:
+    #15191e;
 
   border:
     1px solid
-    var(--border-light);
+    #30363d;
 
-  color: var(--white);
+  color:
+    #ffffff;
 
   padding: 13px;
 
   font: inherit;
-}
 
+  outline: none;
+}
 
 input:not([type="checkbox"]):focus,
 select:focus,
 textarea:focus {
-  outline: none;
-
-  border-color: var(--blue);
-
-  box-shadow:
-    0
-    0
-    0
-    3px
-    rgba(
-      47,
-      127,
-      193,
-      0.12
-    );
+  border-color:
+    var(--blue);
 }
-
 
 textarea {
   resize: vertical;
 
-  min-height: 130px;
+  min-height: 135px;
 }
 
 
 /* =========================
-   SERVICE CHECKBOXES
+   CHECKBOXEN / SERVICES
    ========================= */
 
 .service-options {
-  width: 100%;
-
   margin: 0;
 
-  padding: 20px;
+  padding: 18px;
 
   border:
     1px solid
-    #4a5058;
+    #30363d;
 
-  display: grid;
-
-  grid-template-columns: 1fr;
-
-  gap: 14px;
-
-  background: transparent;
+  background:
+    #15191e;
 }
-
 
 .service-options legend {
   padding:
     0
     8px;
 
-  color: var(--text);
+  color:
+    #d9dde1;
 
-  font-size: 0.95rem;
-
-  font-weight: 400;
+  font-size: 0.9rem;
 }
 
-
 .service-option {
-  display: flex !important;
+  display: flex;
 
-  flex-direction: row !important;
+  flex-direction: row;
 
-  align-items: center !important;
-
-  justify-content: flex-start !important;
-
-  width: auto !important;
+  align-items: center;
 
   gap: 12px;
 
+  width: 100%;
+
   margin: 0;
 
+  padding:
+    10px
+    0;
+
+  color:
+    #c6cbd1;
+
+  font-size: 0.9rem;
+
   cursor: pointer;
-
-  color: #c6cbd1;
-
-  font-size: 0.95rem;
-
-  font-weight: 400;
 }
 
 
-/*
-  De checkbox zelf.
+/* Checkbox zelf */
 
-  Hij krijgt nooit de styling
-  van de gewone inputvelden.
-*/
-
-.service-option input[type="checkbox"] {
-  display: block !important;
-
+input[type="checkbox"] {
   appearance: auto;
 
-  width: 18px !important;
+  -webkit-appearance: checkbox;
 
-  height: 18px !important;
+  position: static;
 
-  min-width: 18px !important;
+  display: inline-block;
 
-  margin: 0 !important;
+  flex: 0 0 auto;
 
-  padding: 0 !important;
+  width: 16px;
+  height: 16px;
+
+  min-width: 16px;
+  min-height: 16px;
+
+  margin: 0;
+
+  padding: 0;
+
+  accent-color:
+    var(--blue);
+
+  cursor: pointer;
+}
+
+.service-option span {
+  flex: 1;
+}
+
+
+/* =========================
+   FORMULIER KNOP
+   ========================= */
+
+.contact-form button,
+#contact-form button[type="submit"] {
+  width: 100%;
+
+  padding:
+    15px
+    21px;
+
+  border: none;
+
+  background:
+    var(--blue);
+
+  color:
+    #ffffff;
+
+  font-weight: 600;
 
   cursor: pointer;
 
-  accent-color: var(--blue);
-
-  background: initial;
-
-  border: initial;
-
-  box-shadow: none;
+  transition:
+    background 0.2s ease;
 }
 
-
-.service-option span {
-  display: block;
-
-  width: auto;
-
-  color: #c6cbd1;
+.contact-form button:hover,
+#contact-form button[type="submit"]:hover {
+  background:
+    var(--blue-light);
 }
 
-
-.form-status {
+#form-status {
   margin: 0;
 
-  color: #8ed0a1;
+  color:
+    #8ed0a1;
 }
 
 
@@ -1188,8 +934,7 @@ textarea {
    FOOTER
    ========================= */
 
-footer,
-.site-footer {
+footer {
   padding:
     50px
     max(5vw, 32px);
@@ -1197,93 +942,20 @@ footer,
   border-top:
     1px solid
     #24292f;
-
-  background:
-    rgba(
-      8,
-      9,
-      11,
-      0.8
-    );
 }
-
-
-footer {
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  gap: 30px;
-}
-
 
 footer p,
-footer small,
-.site-footer > p {
-  margin: 0;
-
-  color: #9ca3ab;
-}
-
-
-.footer-small {
-  font-size: 0.78rem;
+footer small {
+  color:
+    #9ca3ab;
 }
 
 
 /* =========================
-   BLAUWE GLOED
+   MOBIEL
    ========================= */
 
-body::before {
-  content: "";
-
-  position: fixed;
-
-  top: -25vh;
-
-  right: -20vw;
-
-  width: 70vw;
-
-  height: 70vw;
-
-  pointer-events: none;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(
-        47,
-        127,
-        193,
-        0.10
-      ) 0%,
-      rgba(
-        47,
-        127,
-        193,
-        0.04
-      ) 30%,
-      transparent 70%
-    );
-
-  filter:
-    blur(30px);
-
-  z-index: -1;
-}
-
-
-/* =========================
-   RESPONSIVE
-   ========================= */
-
-@media (
-  max-width: 800px
-) {
+@media (max-width: 800px) {
 
   .main-nav {
     display: none;
@@ -1291,9 +963,7 @@ body::before {
     position: absolute;
 
     top: 100%;
-
     left: 0;
-
     right: 0;
 
     padding:
@@ -1308,16 +978,13 @@ body::before {
     align-items: flex-start;
   }
 
-
   .main-nav.open {
     display: flex;
   }
 
-
   .menu-button {
     display: block;
   }
-
 
   .hero,
   .split,
@@ -1325,40 +992,21 @@ body::before {
     grid-template-columns: 1fr;
   }
 
-
   .hero {
     padding-top: 60px;
   }
 
-
   .hero-visual,
-  .compare-slider,
-  .image-comparison {
+  .image-comparison,
+  .compare-slider {
     min-height: 420px;
 
     height: 420px;
   }
 
-
-  .compare-before img {
-    height: 420px;
-  }
-
-
-  .split-visual {
-    min-height: 400px;
-  }
-
-
   .portfolio-grid {
     grid-template-columns: 1fr;
   }
-
-
-  .portfolio-item {
-    min-height: 340px;
-  }
-
 
   .service-card {
     grid-template-columns: 1fr;
@@ -1366,73 +1014,51 @@ body::before {
     gap: 10px;
   }
 
-
   .form-row {
     grid-template-columns: 1fr;
   }
 
-
-  .contact {
-    gap: 60px;
+  .section {
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
 
 }
 
 
-@media (
-  max-width: 600px
-) {
-
-  .section {
-    padding:
-      80px
-      24px;
-  }
-
-
-  .site-header {
-    padding:
-      18px
-      24px;
-  }
-
+@media (max-width: 500px) {
 
   .hero h1 {
     font-size:
       clamp(
-        3.3rem,
+        3rem,
         16vw,
-        5.5rem
+        5rem
       );
   }
 
-
   .hero-visual,
-  .compare-slider,
-  .image-comparison {
-    min-height: 330px;
+  .image-comparison,
+  .compare-slider {
+    min-height: 340px;
 
-    height: 330px;
+    height: 340px;
   }
 
-
-  .compare-before img {
-    height: 330px;
+  .comparison-handle,
+  .compare-handle {
+    width: 48px;
+    height: 48px;
   }
 
-
-  .compare-handle,
-  .comparison-handle {
-    width: 50px;
-
-    height: 50px;
+  .section {
+    padding-left: 24px;
+    padding-right: 24px;
   }
 
-
-  footer {
-    flex-direction: column;
-
-    align-items: flex-start;
+  .site-header {
+    padding-left: 24px;
+    padding-right: 24px;
   }
 
 }
